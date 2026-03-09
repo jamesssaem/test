@@ -44,11 +44,11 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
         source: "."
-#        target: "/home/${{ secrets.EC2_USER }}/prj_kimbab_02"
-        target: "/home/ubuntu/prj_kimbab_02"
-        rm: false
+        target: "/home/${{ secrets.EC2_USER }}/prj_kimbab_02"
+#        target: "/home/ubuntu/prj_kimbab_02"
+        rm: true
         strip_components: 0
-        debug: true
+        use_insecure_cipher: true
     
     - name: Docker Compose 재배포
       uses: appleboy/ssh-action@v1.0.3
