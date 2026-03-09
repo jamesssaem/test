@@ -1,0 +1,14 @@
+{% extends "kimbab/base.html" %}
+
+{% block myBlock %}
+
+<h1>김씨네 김밥집의 김밥 목록입니다.</h1>
+    {% for kimbab in kimbabs %}
+        <div>
+            <h3> {{kimbab.name}} </h3>
+            <p> 가격: {{kimbab.price}}</p>
+            <p> 칼로리: {{kimbab.calories}}</p>
+        </div>
+    {% endfor %}
+
+{% endblock %}

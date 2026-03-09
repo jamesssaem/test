@@ -1,0 +1,22 @@
+{% extends "kimbab/base.html" %}
+
+{% block myBlock %}
+
+    <form method="POST" action="{% url 'kimbab:kimbab_search' %}">
+        {% csrf_token %}
+        <input type="text" name="q">
+        <button type="submit">검색</button>
+    </form>
+
+    {% if kimbabs %}
+        <h2>검색 결과:</h2>
+            {% for kimbab in kimbabs %}
+                <div>
+                    <h3> {{kimbab.name}} </h3>
+                    <p> 가격: {{kimbab.price}}</p>
+                    <p> 칼로리: {{kimbab.calories}}</p>
+                </div>                
+            {% endfor %}
+    {% endif %}
+    
+{% endblock %}

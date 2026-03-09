@@ -1,0 +1,13 @@
+services:
+  # Django 서비스.
+  django:
+    build: .                                         # Dockerfile 을 사용해서 이미지를 빌드한다.
+    container_name: my-django-app
+    restart: always                 
+    command: python manage.py runserver 0.0.0.0:8000         # 아직 개발 서버 사용 구동.
+    volumes:
+      - .:/usr/src/app                               # 코드 변경 즉시 반영
+    ports:
+      - 8080:8000
+
+  
