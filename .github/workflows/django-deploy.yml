@@ -31,7 +31,7 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'     # main 브랜치 확인.
     
     steps:
     - name: 코드 체크아웃
@@ -45,9 +45,8 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         source: "."
         target: "/home/${{ secrets.EC2_USER }}/prj_kimbab_02"
-#        target: "/home/ubuntu/prj_kimbab_02"
-        rm: true
-        strip_components: 0
+        rm: true                            # 파일 전송 대상 폴더를 미리 지워둔다.
+        strip_components: 0                 # 전체 경로를 그대로 복사한다.
         use_insecure_cipher: true
     
     - name: Docker Compose 재배포
